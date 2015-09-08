@@ -92,7 +92,6 @@ An **absolute file path** specifies the complete path to a file, ignoring your c
 * Viewing this [collapsible tree diagram](../other/02_file_tree.png) may help you to visualize the directory structure that we have created.
 
 
-<!--
 ### Intermediate commands
 
 ##### `head`
@@ -131,7 +130,7 @@ An **absolute file path** specifies the complete path to a file, ignoring your c
     * Use `.` for the `<path>` to refer to the working directory.
 * `grep <pattern>` does a **g**lobal search (of your entire computer) for matches
     * Hit `Ctrl + c` if you want to cancel the search.
-* Much more complex string-matching patterns can be used (which we will cover in a future class).
+* Much more complex string-matching patterns can be used.
 
 ##### `|`
 * `<command 1> | <command 2>` pipes the results from `<command 1>` into `<command 2>`, and then the results of `<command 2>` are printed to the console
@@ -158,25 +157,3 @@ An **absolute file path** specifies the complete path to a file, ignoring your c
 * `uniq <filename>` discards all but one of the successive identical lines (thus it only keeps **uniq**ue lines)
 * `uniq -c <filename>` also records the **c**ount of the number of occurrences
 * Because lines must be successive to be counted as identical, you will usually use `sort` before `uniq`.
-
-
-### Homework exercise
-1. Look at the head and the tail of `chipotle.tsv` in the `data` subdirectory. Think for a minute about how the data is structured. What do you think each column means? What do you think each row means? Tell me! (If you're unsure, look at more of the file contents.)
-2. How many orders do there appear to be?
-3. How many lines are in this file?
-4. Which burrito is more popular, steak or chicken?
-5. Do chicken burritos more often have black beans or pinto beans?
-6. Make a list of all of the CSV or TSV files in the DAT8 repo (using a single command). Think about how wildcard characters can help you with this task.
-7. Count the approximate number of occurrences of the word 'dictionary' (regardless of case) across all files in the DAT8 repo.
-8. **Optional:** Use the the command line to discover something "interesting" about the Chipotle data. The advanced commands above may be helpful to you!
-
-
-### Homework solution
-1. `order_id` is the unique identifier for each order. `quantity` is the number purchased of a particular item. `item_name` is the primary name for the item being purchased. `choice_description` is list of modifiers for that item. `price` is the price for that entire line (taking `quantity` into account). A given order consists of one or more rows, depending upon the number of unique items being purchased in that order.
-2. 1834 orders (since 1834 is the highest order_id number)
-3. 4623 lines: `wc -l chipotle.tsv`
-4. chicken is more popular: compare `grep -i 'chicken burrito' chipotle.tsv | wc -l` with `grep -i 'steak burrito' chipotle.tsv | wc -l`
-5. black beans are more popular: compare `grep -i 'chicken burrito' chipotle.tsv | grep -i 'black beans' | wc -l` with `grep -i 'chicken burrito' chipotle.tsv | grep -i 'pinto beans' | wc -l`
-6. `find . -name *.?sv` will find CSV or TSV files.
-7. `grep -ir 'dictionary' . | wc -l` will count the number of lines in which the word 'dictionary' appears, which is a good approximation of the number of occurrences.
--->
